@@ -1,4 +1,4 @@
-package com.ctgu401.carpark.dao;
+package com.ctgu401.carpark.CRUD;
 
 import com.ctgu401.carpark.entity.Parking;
 import com.ctgu401.carpark.utils.VoLog;
@@ -10,20 +10,20 @@ import java.util.List;
 
 
 
-public class CarParkDao {
+public class ParkingChange {
     public static String TAG = "CarParkDao";
-    private volatile static CarParkDao instance;
+    private volatile static ParkingChange instance;
 
-    private CarParkDao() {
+    private ParkingChange() {
     }
 
-    public static CarParkDao getInstance() {
+    public static ParkingChange getInstance() {
         // check 1
         if (null == instance) {
-            synchronized (CarDao.class) {
+            synchronized (CarChange.class) {
                 // check 2
                 if (null == instance) {
-                    instance = new CarParkDao();
+                    instance = new ParkingChange();
                 }
             }
         }
@@ -45,12 +45,12 @@ public class CarParkDao {
 
 
     /**
-     * 添加garageRelation 对象
-     * @param carParkDO
+     * 添加garageRelation 对象，车位只存在保存，不存在更新
+     * @param parking
      * @return
      */
-    public boolean saveCarParkDO(Parking carParkDO){
-        return carParkDO.save();
+    public boolean saveParking(Parking parking){
+        return parking.save();
     }
 
     /**

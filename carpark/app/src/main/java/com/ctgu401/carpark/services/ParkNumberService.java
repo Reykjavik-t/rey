@@ -1,6 +1,6 @@
 package com.ctgu401.carpark.services;
 
-import com.ctgu401.carpark.dao.CarDao;
+import com.ctgu401.carpark.CRUD.CarChange;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -9,7 +9,7 @@ import java.util.Set;
 //分发车库号
 public class ParkNumberService {
     private volatile static ParkNumberService instance;
-    private static CarParkService carParkService = CarParkService.getInstance();
+    private static ParkingService parkingService = ParkingService.getInstance();
     //默认为50个车库号，从1 ~ 50
     private static final int garageIdSize = 50;
     //已经使用过的GarageId
@@ -23,7 +23,7 @@ public class ParkNumberService {
     public static ParkNumberService getInstance() {
         // check 1
         if (null == instance) {
-            synchronized (CarDao.class) {
+            synchronized (CarChange.class) {
                 // check 2
                 if (null == instance) {
                     instance = new ParkNumberService();
@@ -38,7 +38,7 @@ public class ParkNumberService {
      * 初始化Set集合
      */
     private static void initSet() {
-        usedParkNumber = carParkService.listAllParkNumber();
+        usedParkNumber = parkingService.listAllParkNumber();
         Set<Integer> set2 = new HashSet<>();
         for (int i = 1; i <= garageIdSize; i++) {
             if (!usedParkNumber.contains(i)) {

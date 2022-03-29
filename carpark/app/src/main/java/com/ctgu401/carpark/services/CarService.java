@@ -1,7 +1,7 @@
 package com.ctgu401.carpark.services;
 
 
-import com.ctgu401.carpark.dao.CarDao;
+import com.ctgu401.carpark.CRUD.CarChange;
 import com.ctgu401.carpark.entity.Car;
 import com.ctgu401.carpark.utils.VoLog;
 
@@ -16,7 +16,7 @@ public class CarService {
     public static CarService getInstance() {
         // check 1
         if (null == instance) {
-            synchronized (CarDao.class) {
+            synchronized (CarChange.class) {
                 // check 2
                 if (null == instance) {
                     instance = new CarService();
@@ -26,14 +26,14 @@ public class CarService {
         return instance;
     }
 
-    private static CarDao carDao = CarDao.getInstance();
+    private static CarChange carChange = CarChange.getInstance();
 
     /**
      * @param number plate number
      */
     public Car getByNumber(String number) {
         VoLog.i(TAG, "getByNumber(String number),number= " + number);
-        return carDao.queryByNumber(number);
+        return carChange.queryByNumber(number);
     }
 
     /**
@@ -45,14 +45,14 @@ public class CarService {
      * @return true or false
      */
     public boolean saveOrUpdate(String number, String username, boolean isMonthRent) {
-        Car carDO = new Car();
-        carDO.setNumber(number);
-        carDO.setUsername(username);
-        carDO.setMonthRent(isMonthRent);
+        Car car = new Car();
+        car.setNumber(number);
+        car.setUsername(username);
+        car.setMonthRent(isMonthRent);
         if (isMonthRent) {
-            carDO.setMonthRentStartTime(System.currentTimeMillis());
+            car.setMonthRentStartTime(System.currentTimeMillis());
         }
-        return carDao.saveOrUpdate(number, carDO);
+        return carChange.saveOrUpdate(number, car);
     }
 
     public int monthRentExpired(String number, String username) {
@@ -60,10 +60,10 @@ public class CarService {
         carDO.setNumber(number);
         carDO.setUsername(username);
         carDO.setMonthRent(false);
-        return carDao.updateMonthRentByNumber(number, carDO);
+        return carChange.updateMonthRentByNumber(number, carDO);
     }
 
     public boolean deleteByNumber(String number) {
-        return carDao.deleteByNumber(number);
+        return carChange.deleteByNumber(number);
     }
 }

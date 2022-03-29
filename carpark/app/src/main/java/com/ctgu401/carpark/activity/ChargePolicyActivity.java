@@ -7,19 +7,21 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ctgu401.carpark.services.CarParkService;
+import com.ctgu401.carpark.services.ParkingService;
 import com.ctgu401.carpark.services.CarService;
 import com.ctgu401.carpark.R;
 import com.ctgu401.carpark.services.ParkNumberService;
+import com.ctgu401.carpark.utils.VoLog;
 
 public class ChargePolicyActivity extends AppCompatActivity implements View.OnClickListener {
+    public static String TAG = "ChargePolicyActivity";
     private String plateNumber;      // 车牌号
     private String username;     // 用户名
     private Button monthBtn;
     private Button singleBtn;
 
     private CarService carService = CarService.getInstance();
-    private CarParkService carParkService = CarParkService.getInstance();
+    private ParkingService parkingService = ParkingService.getInstance();
 
     private ParkNumberService parkNumberService = ParkNumberService.getInstance();
 
@@ -53,20 +55,21 @@ public class ChargePolicyActivity extends AppCompatActivity implements View.OnCl
                 break;
         }
         //跳到展示页面
-//        Intent intent = new Intent(ChargePolicyActivity.this, EnterActivity.class);
-//        intent.putExtra("plateNumber" , plateNumber);
-//        intent.putExtra("carUserName" , username);
-//        intent.putExtra("parkNumer" , parkNumber + "");
-//        intent.putExtra("payType" , payType);
-//        startActivity(intent);
+        Intent intent = new Intent(ChargePolicyActivity.this, EnterActivity.class);
+        intent.putExtra("plateNumber" , plateNumber);
+        intent.putExtra("carUserName" , username);
+        intent.putExtra("parkNumer" , parkNumber + "");
+        intent.putExtra("payType" , payType);
+        startActivity(intent);
     }
 
     private int registerAndEnter(boolean isMonthRent) {
-        carService.saveOrUpdate(plateNumber, username, isMonthRent);
+        carService.saveOrUpdate(plateNumber, username, isMonthRent);//对到来的车辆进行注册或者数据升级
 
-        //添加车库关联信息
+        //添加车位关联信息
         int parkNumber = parkNumberService.getParkNumber();
-        carParkService.saveCarParkDO(plateNumber, isMonthRent, parkNumber);
+        parkingService.saveParking(plateNumber, isMonthRent, parkNumber);
+        VoLog.i(TAG, "registerAndEnter = " + plateNumber);
 
         return parkNumber;
     }

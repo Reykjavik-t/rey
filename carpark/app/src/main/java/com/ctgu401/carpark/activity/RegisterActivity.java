@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.ctgu401.carpark.R;
 
@@ -14,7 +13,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private String plateNumber;      //车牌
     private String username;     //用户名
     private Button enterBtn;
-    private TextView plateNumberTextView;        //车牌文本框
+    private EditText plateNumberTextView;        //车牌文本框
     private EditText usernameEditText;       //用户名输入框
 
     @Override

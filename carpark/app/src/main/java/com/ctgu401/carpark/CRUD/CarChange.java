@@ -1,4 +1,4 @@
-package com.ctgu401.carpark.dao;
+package com.ctgu401.carpark.CRUD;
 
 
 import com.ctgu401.carpark.entity.Car;
@@ -8,20 +8,20 @@ import org.litepal.LitePal;
 
 
 
-public class CarDao {
+public class CarChange {
     public static String TAG = "CarDao";
-    private volatile static CarDao instance;
+    private volatile static CarChange instance;
 
-    private CarDao() {
+    private CarChange() {
     }
 
-    public static CarDao getInstance() {
+    public static CarChange getInstance() {
         // check 1
         if (null == instance) {
-            synchronized (CarDao.class) {
+            synchronized (CarChange.class) {
                 // check 2
                 if (null == instance) {
-                    instance = new CarDao();
+                    instance = new CarChange();
                 }
             }
         }
@@ -38,8 +38,8 @@ public class CarDao {
 
     }
 
-    public boolean saveOrUpdate(String number, Car carDO) {
-        return carDO.saveOrUpdate("number = ?", number);
+    public boolean saveOrUpdate(String number, Car car) {
+        return car.saveOrUpdate("number = ?", number);
     }
 
     public int updateMonthRentByNumber(String number, Car carDO) {

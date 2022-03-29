@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ctgu401.carpark.activity.RegisterActivity;
 import com.ctgu401.carpark.entity.Car;
 import com.ctgu401.carpark.entity.Parking;
-import com.ctgu401.carpark.services.CarParkService;
+import com.ctgu401.carpark.services.ParkingService;
 import com.ctgu401.carpark.services.CarService;
 import com.ctgu401.carpark.utils.GetCarNumber;
 import com.ctgu401.carpark.utils.ImageHandler;
@@ -53,12 +53,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView garageId;
     private Button scanBtn;
     private Button choosePhoto;
+    private Button manualInput;
     private ImageView picture;
 
     //存放图片byte数组
     private static byte[] imagedata;
 
-    private CarParkService carParkService = CarParkService.getInstance();
+    private ParkingService parkingService = ParkingService.getInstance();
     private CarService carService = CarService.getInstance();
 
     @Override
@@ -77,11 +78,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         scanBtn = findViewById(R.id.scan_btn);
         choosePhoto = findViewById(R.id.choose_from_album);
         picture = findViewById(R.id.iv_picture);
+        manualInput = findViewById(R.id.manual_input);
+
         freeParking = 50;
 //        freeParking = parkNumberService.leaveParkNumbers();
 //        garageId.setText(parkingSpace + "");
         scanBtn.setOnClickListener(this);
         choosePhoto.setOnClickListener(this);
+        manualInput.setOnClickListener(this);
     }
 
     @Override
@@ -99,6 +103,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.scan_btn:
                 //scan();
+                break;
+            case R.id.manual_input:
+                Intent simpleIntent = new Intent(MainActivity.this,RegisterActivity.class);
+                startActivity(simpleIntent);
+                break;
         }
     }
 
@@ -216,8 +225,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void park(String plateNumber) {
         VoLog.i(TAG, "park,plateNumber= " + plateNumber);
-        //根据车牌号获取到车库对象表(空表)
-        Parking carParkDO = carParkService.getGarParkDOByNumber(plateNumber);
+        //根据车牌号获取到车库对象表(如果是空表，则表示入库)
+        Parking carParkDO = parkingService.getGarParkDOByNumber(plateNumber);
         // 离开停车场
         if (carParkDO != null) {
 //            Car carDO = carService.getByNumber(plateNumber);

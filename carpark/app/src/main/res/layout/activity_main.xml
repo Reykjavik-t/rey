@@ -33,15 +33,17 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10px"
+            android:background="#778899"></View>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
+            android:orientation="horizontal">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="8dp"
@@ -50,25 +52,25 @@
                 android:textColor="#0D0D0D"
                 android:textSize="22dp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="#778899"></View>
-
             <TextView
                 android:id="@+id/garage_id"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#0D0D0D"
                 android:textSize="22dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="10px"
                 android:background="#778899"></View>
 
             <Button
@@ -76,7 +78,7 @@
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="20dp"
                 android:background="@color/app_mainColer"
                 android:text="扫描识别车牌"
                 android:textColor="#FCFCFC"
@@ -89,17 +91,31 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@color/app_mainColer"
-                android:text="相册"
+                android:text="相册识别车牌"
+                android:textColor="#FCFCFC"
+                android:textSize="22dp"
+                android:textStyle="normal" />
+            <Button
+                android:id="@+id/manual_input"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/app_mainColer"
+                android:text="手动输入信息"
                 android:textColor="#FCFCFC"
                 android:textSize="22dp"
                 android:textStyle="normal" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="2px"
+            android:layout_height="10px"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#778899"></View>
+            android:background="#778899"/>
+
         <ImageView
             android:id="@+id/iv_picture"
             android:layout_width="wrap_content"

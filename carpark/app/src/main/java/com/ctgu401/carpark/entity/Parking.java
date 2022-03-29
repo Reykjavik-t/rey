@@ -3,11 +3,11 @@ package com.ctgu401.carpark.entity;
 import org.litepal.crud.LitePalSupport;
 
 /**
- * 车库关系表
+ * 车位关系表
  */
 public class Parking extends LitePalSupport {
 
-    private Integer garageNumber;//车库号
+    private Integer garageNumber;//车位号
 
     private String number;//车牌号
 
