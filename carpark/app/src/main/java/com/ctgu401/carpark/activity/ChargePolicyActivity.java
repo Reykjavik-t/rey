@@ -22,7 +22,6 @@ public class ChargePolicyActivity extends AppCompatActivity implements View.OnCl
 
     private CarService carService = CarService.getInstance();
     private ParkingService parkingService = ParkingService.getInstance();
-
     private ParkNumberService parkNumberService = ParkNumberService.getInstance();
 
     @Override
@@ -42,8 +41,8 @@ public class ChargePolicyActivity extends AppCompatActivity implements View.OnCl
     //点击包月或者按次计费之后跳到主页
     @Override
     public void onClick(View v) {
-        int parkNumber = 0;
-        String payType = "";
+        int parkNumber = 0;//车位号
+        String payType = "";//支付方式
         switch (v.getId()) {
             case R.id.Month:
                 parkNumber = registerAndEnter(true);
@@ -65,11 +64,12 @@ public class ChargePolicyActivity extends AppCompatActivity implements View.OnCl
 
     private int registerAndEnter(boolean isMonthRent) {
         carService.saveOrUpdate(plateNumber, username, isMonthRent);//对到来的车辆进行注册或者数据升级
+        VoLog.i(TAG, "registerAndEnter, (已注册或升级进Car表)plateNumber = " + plateNumber + ", username = " + username + ", isMonthRent = " + isMonthRent);
 
         //添加车位关联信息
         int parkNumber = parkNumberService.getParkNumber();
         parkingService.saveParking(plateNumber, isMonthRent, parkNumber);
-        VoLog.i(TAG, "registerAndEnter = " + plateNumber);
+        VoLog.i(TAG, "registerAndEnter, (已注册或升级进Parking表)plateNumber = " + plateNumber + ", isMonthRent = " + isMonthRent + ", ParkNumber(车位号) = " + parkNumber);
 
         return parkNumber;
     }

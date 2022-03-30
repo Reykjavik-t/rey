@@ -3,7 +3,6 @@ package com.ctgu401.carpark.services;
 import com.ctgu401.carpark.CRUD.CarChange;
 import com.ctgu401.carpark.CRUD.ParkingChange;
 import com.ctgu401.carpark.entity.Parking;
-import com.ctgu401.carpark.utils.VoLog;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -61,12 +60,12 @@ public class ParkingService {
 
 
     /**
-     * 根据number 删除GarParkDO对象
+     * 根据number 删除Parking对象
      * @param number
      * @return
      */
-    public int deleteCarParkDOByNumber(String number){
-        return parkingChange.deleteCarParkDOByNumber(number);
+    public int deleteParkingByNumber(String number){
+        return parkingChange.deleteParkingByNumber(number);
     }
 
 
@@ -75,8 +74,7 @@ public class ParkingService {
      * @param number:车牌号
      * @return
      */
-    public Parking getGarParkDOByNumber(String number){
-        VoLog.i(TAG, "getGarParkDOByNumber(number),number(车牌号)= " + number);
-        return parkingChange.getCarParkDOByNumber(number);
+    public Parking getParkingByNumber(String number){
+        return parkingChange.getParkingByNumber(number);
     }
 }

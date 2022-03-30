@@ -31,8 +31,7 @@ public class CarService {
     /**
      * @param number plate number
      */
-    public Car getByNumber(String number) {
-        VoLog.i(TAG, "getByNumber(String number),number= " + number);
+    public Car getCarByNumber(String number) {
         return carChange.queryByNumber(number);
     }
 
@@ -56,11 +55,11 @@ public class CarService {
     }
 
     public int monthRentExpired(String number, String username) {
-        Car carDO = new Car();
-        carDO.setNumber(number);
-        carDO.setUsername(username);
-        carDO.setMonthRent(false);
-        return carChange.updateMonthRentByNumber(number, carDO);
+        Car car = new Car();
+        car.setNumber(number);
+        car.setUsername(username);
+        car.setMonthRent(false);
+        return carChange.updateMonthRentByNumber(number, car);
     }
 
     public boolean deleteByNumber(String number) {

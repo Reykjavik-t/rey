@@ -20,7 +20,7 @@ public class EnterActivity extends AppCompatActivity implements View.OnClickList
     private String plateNumber;//车牌号码
     private String carUserName;//车主信息
     private String parkNumer;//车库号码
-    private String payType;//付费方式
+    private String payType;//计费模式
 
     //TextView
     private TextView tvCarNumber;

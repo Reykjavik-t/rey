@@ -60,12 +60,12 @@
 
         <EditText
             android:id="@+id/plate_number"
-            android:hint="请输入车主信息"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@null"
-            android:textSize="22dp"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:hint="请输入车主信息"
+            android:textSize="22dp" />
 
     </LinearLayout>
 

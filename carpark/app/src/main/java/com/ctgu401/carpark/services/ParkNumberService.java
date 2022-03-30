@@ -10,8 +10,8 @@ import java.util.Set;
 public class ParkNumberService {
     private volatile static ParkNumberService instance;
     private static ParkingService parkingService = ParkingService.getInstance();
-    //默认为50个车库号，从1 ~ 50
-    private static final int garageIdSize = 50;
+    //默认为车库，从1-100
+    private static final int garageIdSize = 100;
     //已经使用过的GarageId
     private static Set<Integer> usedParkNumber = null;
     //还未使用过的GarageId
@@ -68,7 +68,7 @@ public class ParkNumberService {
 
     /**
      * 出库
-     * @param parkNumber
+     * @param parkNumber(车位号)
      */
     public void outParkNumber(int parkNumber) {
         if (usedParkNumber == null || unUsedParkNumber == null) {
@@ -79,7 +79,7 @@ public class ParkNumberService {
     }
 
     /**
-     * 剩余车库个数
+     * 剩余车位个数
      * @return
      */
     public int leaveParkNumbers() {

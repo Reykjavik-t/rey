@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".activity.RegisterActivity"></activity>
         <activity android:name=".activity.ChargePolicyActivity"></activity>
+        <activity android:name=".activity.EnterActivity"></activity>
+        <activity android:name=".activity.LeaveActivity"></activity>
     </application>
 
 </manifest>

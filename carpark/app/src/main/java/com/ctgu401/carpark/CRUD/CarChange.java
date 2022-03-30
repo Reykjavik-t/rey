@@ -28,22 +28,20 @@ public class CarChange {
         return instance;
     }
 
-    public boolean save(Car carDO) {
-        return carDO.save();
+    public boolean save(Car car) {
+        return car.save();
     }
 
     public Car queryByNumber(String number) {
-        VoLog.i(TAG, "queryByNumber(String number),number= " + number);
         return LitePal.where("number = ?", number).findFirst(Car.class);
-
     }
 
     public boolean saveOrUpdate(String number, Car car) {
         return car.saveOrUpdate("number = ?", number);
     }
 
-    public int updateMonthRentByNumber(String number, Car carDO) {
-        return carDO.updateAll("number = ?", number);
+    public int updateMonthRentByNumber(String number, Car car) {
+        return car.updateAll("number = ?", number);
     }
 
     public boolean deleteByNumber(String number) {

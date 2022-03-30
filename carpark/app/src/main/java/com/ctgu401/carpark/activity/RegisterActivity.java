@@ -8,8 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.ctgu401.carpark.R;
+import com.ctgu401.carpark.utils.VoLog;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+    public static String TAG = "RegisterActivity";
     private String plateNumber;      //车牌
     private String username;     //用户名
     private Button enterBtn;
@@ -35,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent(RegisterActivity.this, ChargePolicyActivity.class);
         intent.putExtra("plateNumber", plateNumber);
         intent.putExtra("username", username);
+        VoLog.i(TAG, "onClick，plateNumber = " + plateNumber + ",username = " + username);
         startActivity(intent);
     }
 

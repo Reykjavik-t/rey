@@ -58,18 +58,17 @@ public class ParkingChange {
      * @param number
      * @return
      */
-    public int deleteCarParkDOByNumber(String number){
+    public int deleteParkingByNumber(String number){
         return LitePal.deleteAll(Parking.class , "number = ?" , number);
     }
 
 
     /**
-     * 根据number(车牌号) 获取Parking（停车场） 对象
+     * 根据number(车牌号) 获取Parking（车位） 对象
      * @param number
      * @return
      */
-    public Parking getCarParkDOByNumber(String number){
-        VoLog.i(TAG, "getCarParkDOByNumber(String number),number= " + number);
+    public Parking getParkingByNumber(String number){
         //从Parking表中查询number = number的行
         List<Parking> res = LitePal.where("number = ?" , number).find(Parking.class);
         return res.size() == 0 ? null : res.get(0);
