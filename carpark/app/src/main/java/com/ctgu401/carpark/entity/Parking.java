@@ -1,11 +1,14 @@
 package com.ctgu401.carpark.entity;
 
+import com.ctgu401.carpark.utils.VoLog;
+
 import org.litepal.crud.LitePalSupport;
 
 /**
  * 车位关系表
  */
 public class Parking extends LitePalSupport {
+    private static String TAG = "Parking";
 
     private Integer garageNumber;//车位号
 
@@ -24,6 +27,7 @@ public class Parking extends LitePalSupport {
     }
 
     public String getNumber() {
+        VoLog.i(TAG,"getNumber "+number);
         return number;
     }
 
@@ -49,7 +53,7 @@ public class Parking extends LitePalSupport {
 
     @Override
     public String toString() {
-        return "CarParkDO{" +
+        return "Parking{" +
                 "garageNumber=" + garageNumber +
                 ", number='" + number + '\'' +
                 ", enterTime=" + enterTime +

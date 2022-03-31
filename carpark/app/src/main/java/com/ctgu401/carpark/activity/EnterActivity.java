@@ -1,11 +1,16 @@
 package com.ctgu401.carpark.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ctgu401.carpark.MainActivity;
 import com.ctgu401.carpark.R;
@@ -70,7 +75,20 @@ public class EnterActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(EnterActivity.this, MainActivity.class);
-        startActivity(intent);
+        final TextView et = new TextView(this);
+        new AlertDialog.Builder(this).setTitle("入库成功")
+                .setIcon(android.R.drawable.sym_def_app_icon)
+                .setView(et)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //按下确定键后的事件
+//                        String number = et.getText().toString();
+//                        Toast.makeText(getApplicationContext(), "车牌：" + number,Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(EnterActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("取消",null).show();
     }
 }

@@ -4,12 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/tanwenju/Desktop/graduation/carpark/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2065" />
+        <entry key="..\:/Users/tanwenju/Desktop/graduation/carpark/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2065" />
         <entry key="..\:/Users/tanwenju/Desktop/graduation/carpark/app/src/main/res/layout/activity_charge_policy.xml" value="0.22" />
         <entry key="..\:/Users/tanwenju/Desktop/graduation/carpark/app/src/main/res/layout/activity_enter.xml" value="0.25" />
         <entry key="..\:/Users/tanwenju/Desktop/graduation/carpark/app/src/main/res/layout/activity_leave.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/tanwenju/Desktop/graduation/carpark/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/tanwenju/Desktop/graduation/carpark/app/src/main/res/layout/activity_query.xml" value="0.33" />
         <entry key="..\:/Users/tanwenju/Desktop/graduation/carpark/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/tanwenju/Desktop/graduation/carpark/app/src/main/res/layout/input_dialog.xml" value="0.23867753623188406" />
+        <entry key="..\:/Users/tanwenju/Desktop/graduation/carpark/app/src/main/res/layout/query_item.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>

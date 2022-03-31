@@ -5,6 +5,7 @@ import com.ctgu401.carpark.CRUD.ParkingChange;
 import com.ctgu401.carpark.entity.Parking;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -35,15 +36,24 @@ public class ParkingService {
     private ParkingChange parkingChange = ParkingChange.getInstance();
 
     /**
-     * 获取所有在使用的车库号
+     * 获取所有在使用的车位置号
      * @return
      */
-    public Set<Integer> listAllParkNumber(){
+    public  Set<Integer> listAllParkNumber(){
         return new HashSet<Integer>(parkingChange.listAllParkNumber());
     }
 
     /**
-     * 根据number、isRent、garageNumber 添加CarParkDO对象
+     * 获取所有正在使用的车库对象
+     * @return
+     */
+    public List<Parking> allUsedParking()
+    {
+        return parkingChange.listAllUsedParking();
+    }
+
+    /**
+     * 根据number、isRent、garageNumber 添加Parking对象
      * @param number
      * @param isRent
      * @param garageNumber

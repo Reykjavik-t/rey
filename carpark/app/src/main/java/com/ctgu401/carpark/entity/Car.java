@@ -50,7 +50,7 @@ public class Car extends LitePalSupport implements Serializable {
 
     @Override
     public String toString() {
-        return "CarDO{" +
+        return "Car{" +
                 "number='" + number + '\'' +
                 ", username='" + username + '\'' +
                 ", isMonthRent=" + isMonthRent +

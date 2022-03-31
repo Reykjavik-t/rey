@@ -31,7 +31,7 @@ public class ParkingChange {
     }
 
     /**
-     * 获取所有的车库号
+     * 获取所有的车库号(在使用的)
      * @return
      */
     public List<Integer> listAllParkNumber(){
@@ -42,6 +42,17 @@ public class ParkingChange {
         }
         return res;
     }
+
+    /**
+     * 获取所有正在使用的车库对象
+     * @return
+     */
+    public List<Parking> listAllUsedParking()
+    {
+        List<Parking> list = LitePal.select().find(Parking.class);
+        return list;
+    }
+
 
 
     /**

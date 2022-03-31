@@ -79,22 +79,22 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:background="@color/app_mainColer"
                 android:text="扫描识别车牌"
-                android:textColor="#FCFCFC"
+                android:textColor="#000000"
                 android:textSize="22dp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:background="@drawable/button0"/>
             <Button
                 android:id="@+id/choose_from_album"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@color/app_mainColer"
                 android:text="相册识别车牌"
-                android:textColor="#FCFCFC"
+                android:textColor="#000000"
                 android:textSize="22dp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:background="@drawable/button0"/>
             <Button
                 android:id="@+id/manual_input"
                 android:layout_width="300dp"
@@ -102,23 +102,26 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/app_mainColer"
                 android:text="手动输入信息"
-                android:textColor="#FCFCFC"
+                android:textColor="#000000"
                 android:textSize="22dp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:background="@drawable/button0"/>
             <Button
                 android:id="@+id/parking_query"
-                android:layout_width="300dp"
+                android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/colorAccent"
-                android:text="查看车库状态"
-                android:textColor="#00BCD4"
-                android:textSize="22dp"
-                android:textStyle="normal" />
+                android:text="车库管理"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:textStyle="normal"
+                android:shadowColor="@color/app_mainColer"
+                android:shadowRadius="2"
+                android:shadowDx="5"
+                android:shadowDy="5"/>
         </LinearLayout>
 
         <View

@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ctgu401.carpark.activity.ChargePolicyActivity;
 import com.ctgu401.carpark.activity.EnterActivity;
 import com.ctgu401.carpark.activity.LeaveActivity;
+import com.ctgu401.carpark.activity.QueryActivity;
 import com.ctgu401.carpark.activity.RegisterActivity;
 import com.ctgu401.carpark.entity.Car;
 import com.ctgu401.carpark.entity.Parking;
@@ -53,8 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //页面组件
     private TextView garageId;
     private Button scanBtn;
-    private Button choosePhoto;
-    private Button manualInput;
+    private Button choosePhotoBtn;
+    private Button manualInputBtn;
+    private Button queryBtn;
     private ImageView picture;
 
     public static final int TAKE_PHOTO = 1; // 拍照
@@ -82,16 +84,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         VoLog.i(TAG, " init");
         garageId = findViewById(R.id.garage_id);
         scanBtn = findViewById(R.id.scan_btn);
-        choosePhoto = findViewById(R.id.choose_from_album);
+        choosePhotoBtn = findViewById(R.id.choose_from_album);
         picture = findViewById(R.id.iv_picture);
-        manualInput = findViewById(R.id.manual_input);
+        manualInputBtn = findViewById(R.id.manual_input);
+        queryBtn = findViewById(R.id.parking_query);
 
         freeParking = 50;
         freeParking = parkNumberService.leaveParkNumbers();
         garageId.setText(freeParking + "");
         scanBtn.setOnClickListener(this);
-        choosePhoto.setOnClickListener(this);
-        manualInput.setOnClickListener(this);
+        choosePhotoBtn.setOnClickListener(this);
+        manualInputBtn.setOnClickListener(this);
+        queryBtn.setOnClickListener(this);
     }
 
     @Override
@@ -112,6 +116,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.manual_input:
                 dialog();
+                break;
+            case R.id.parking_query:
+                parking_query();
                 break;
         }
     }
@@ -151,7 +158,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(getApplicationContext(), "车牌：" + number,Toast.LENGTH_LONG).show();
                         park(number);
                     }
-                }).setNegativeButton("取消",null).show();
+                })
+                .setNegativeButton("取消",null).show();
+    }
+
+    //查询车位状态
+    private void parking_query()
+    {
+        VoLog.i(TAG,"parking_query");
+        Intent intent = new Intent(MainActivity.this, QueryActivity.class);
+        startActivity(intent);
     }
 
     /**
