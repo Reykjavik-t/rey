@@ -196,7 +196,7 @@
             android:id="@+id/leave"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:text="确定信息"
+            android:text="完成并返回"
             android:textSize="22dp"
             android:textColor="#FCFCFC"
             android:background="@color/app_mainColer"
