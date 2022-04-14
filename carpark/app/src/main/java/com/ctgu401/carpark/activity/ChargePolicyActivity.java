@@ -27,6 +27,7 @@ public class ChargePolicyActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setBackgroundDrawableResource(R.drawable.background);
         setContentView(R.layout.activity_charge_policy);
 
         monthBtn = findViewById(R.id.Month);

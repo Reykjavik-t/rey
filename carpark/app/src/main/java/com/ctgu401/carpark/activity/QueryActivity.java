@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class QueryActivity extends Activity implements View.OnClickListener
+public class QueryActivity extends Activity
 {
     private static String TAG = "QueryActivity";
 
@@ -55,27 +55,6 @@ public class QueryActivity extends Activity implements View.OnClickListener
         // 为RecyclerView设置布局管理器
         recyclerView.setLayoutManager(layoutManager);
 
-//        recyclerView.addOnItemTouchListener();
-//
-//        class RecyclerViewClickListener implements RecyclerView.OnItemTouchListener
-//        {
-//
-//            @Override
-//            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-//
-//            }
-//
-//            @Override
-//            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-//
-//            }
-//        }
-
         //已使用的车位数
         int usedPark = initData();
         RecyclerView.Adapter adapter = new RecyclerView.Adapter<ParkingViewHolder>(){
@@ -86,27 +65,6 @@ public class QueryActivity extends Activity implements View.OnClickListener
             {
                 VoLog.i(TAG,"QueryActivity_onCreateViewHolder " + currentPosition);
                 View view = LayoutInflater.from(QueryActivity.this).inflate(R.layout.query_item, null);
-                view.setOnClickListener(new View.OnClickListener(){
-
-                    @Override
-                    public void onClick(View v) {
-                        final TextView et = new TextView(QueryActivity.this);
-                        new AlertDialog.Builder(QueryActivity.this).setTitle("入库成功")
-                                .setIcon(android.R.drawable.sym_def_app_icon)
-                                .setView(et)
-                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        //按下确定键后的事件
-//                        String number = et.getText().toString();
-//                        Toast.makeText(getApplicationContext(), "车牌：" + number,Toast.LENGTH_LONG).show();
-                                        //Intent intent = new Intent(EnterActivity.this, MainActivity.class);
-                                        //startActivity(intent);
-                                    }
-                                })
-                                .setNegativeButton("取消",null).show();
-                    }
-                });
                 return new ParkingViewHolder(view);
             }
             // 为列表项组件绑定数据的方法，每次组件重新显示出来时都会重新执行该方法
@@ -149,29 +107,6 @@ public class QueryActivity extends Activity implements View.OnClickListener
         return a;
     }
 
-    @Override
-    public void onClick(View v)
-    {
-//        TableLayout loginForm = (TableLayout) getLayoutInflater().inflate(R.layout.query_detail_dialog, null);
-//        switch (v.getId())
-//        {
-//            case R.id.query_item_details:
-//                final TextView et = new TextView(this);
-//                new AlertDialog.Builder(this).setTitle("入库成功")
-//                        .setIcon(android.R.drawable.sym_def_app_icon)
-//                        .setView(et)
-//                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                //按下确定键后的事件
-//                        String number = et.getText().toString();
-//                            }
-//                        })
-//                        .setNegativeButton("取消",null).show();
-//        }
-    }
-
-
     class ParkingViewHolder extends RecyclerView.ViewHolder
     {
         private TextView garageNumber;
@@ -188,7 +123,6 @@ public class QueryActivity extends Activity implements View.OnClickListener
             this.number = itemView.findViewById(R.id.query_item_number);
             this.garageNumber = itemView.findViewById(R.id.query_item_garageNumber);
             this.leaveBtn = itemView.findViewById(R.id.query_item_leave);
-            this.detailBtn = itemView.findViewById(R.id.query_item_details);
 
             leaveBtn.setOnClickListener((view)->{
                 VoLog.i(TAG,"该车位的车牌号：" + allUserParking.get(currentPosition).getNumber());

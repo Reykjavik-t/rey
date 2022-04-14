@@ -75,20 +75,13 @@
         android:layout_height="wrap_content"
         android:gravity="center">
         <Button
-            android:id="@+id/query_item_details"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:text="详情"
-            android:textSize="16dp"
-            android:background="@color/teal_200"
-            android:layout_marginEnd="260dp"/>
-        <Button
             android:id="@+id/query_item_leave"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:text="出库"
             android:textSize="16dp"
-            android:background="@color/teal_200"/>
+            android:background="@color/teal_200"
+            android:layout_marginBottom="5dp"/>
     </LinearLayout>
 
     <View
