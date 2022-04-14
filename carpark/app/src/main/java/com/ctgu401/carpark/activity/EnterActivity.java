@@ -40,6 +40,7 @@ public class EnterActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setBackgroundDrawableResource(R.drawable.background);
         setContentView(R.layout.activity_enter);
 
         //初始化基本组件

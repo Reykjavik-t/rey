@@ -21,6 +21,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setBackgroundDrawableResource(R.drawable.background);
         setContentView(R.layout.activity_register);
 
         plateNumberTextView =findViewById(R.id.plate_number);

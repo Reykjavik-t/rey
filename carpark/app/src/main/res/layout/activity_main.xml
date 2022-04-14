@@ -14,24 +14,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="35dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:src="@drawable/logo" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/app_mainColer"
-                android:gravity="center"
-                android:text="@string/app_title"
-                android:textColor="#FCFCFC"
-                android:textSize="15sp"
-                android:textStyle="italic" />
-
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_mainColer"
+            android:gravity="center"
+            android:text="@string/app_title"
+            android:textColor="#FCFCFC"
+            android:textSize="30sp" />
 
         <View
             android:layout_width="match_parent"
@@ -62,16 +63,52 @@
                 android:textSize="22dp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/underline">
+            <Button
+                android:id="@+id/parking_query"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="车库管理"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:textStyle="normal"
+                android:shadowColor="@color/purple_200"
+                android:shadowRadius="2"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:background="@drawable/button_drawable"/>
+
+            <Button
+                android:id="@+id/help"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="使用帮助"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:textStyle="normal"
+                android:shadowColor="@color/purple_200"
+                android:shadowRadius="2"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/button_drawable"/>
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10px"
-                android:background="#778899"></View>
 
             <Button
                 android:id="@+id/scan_btn"
@@ -83,7 +120,7 @@
                 android:textColor="#000000"
                 android:textSize="22dp"
                 android:textStyle="normal"
-                android:background="@drawable/button0"/>
+                android:background="@drawable/button_drawable_mainactivity"/>
             <Button
                 android:id="@+id/choose_from_album"
                 android:layout_width="300dp"
@@ -94,7 +131,7 @@
                 android:textColor="#000000"
                 android:textSize="22dp"
                 android:textStyle="normal"
-                android:background="@drawable/button0"/>
+                android:background="@drawable/button_drawable_mainactivity"/>
             <Button
                 android:id="@+id/manual_input"
                 android:layout_width="300dp"
@@ -106,22 +143,8 @@
                 android:textColor="#000000"
                 android:textSize="22dp"
                 android:textStyle="normal"
-                android:background="@drawable/button0"/>
-            <Button
-                android:id="@+id/parking_query"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="车库管理"
-                android:textColor="#000000"
-                android:textSize="25dp"
-                android:textStyle="normal"
-                android:shadowColor="@color/app_mainColer"
-                android:shadowRadius="2"
-                android:shadowDx="5"
-                android:shadowDy="5"/>
+                android:background="@drawable/button_drawable_mainactivity"/>
+
         </LinearLayout>
 
         <View

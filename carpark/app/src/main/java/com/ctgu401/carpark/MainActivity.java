@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         VoLog.i(TAG, " onCreate");
+        this.getWindow().setBackgroundDrawableResource(R.drawable.background);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         LitePal.initialize(this);//初始化LitePal

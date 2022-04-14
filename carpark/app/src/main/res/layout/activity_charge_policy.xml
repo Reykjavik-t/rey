@@ -9,25 +9,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/underline">
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="35dp"
-                android:src="@drawable/logo"/>
-
+                android:layout_width="257dp"
+                android:layout_height="40dp"
+                android:src="@drawable/logo1"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="5dp" />
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/app_title"
-                android:background="@color/app_mainColer"
-                android:textColor="#FCFCFC"
-                android:textSize="15sp"
-                android:textStyle="italic"
-                android:gravity="center"/>
-
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/image_underline"/>
         </LinearLayout>
-    <TextView
+
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
@@ -49,7 +52,7 @@
             android:text="包月计费：100元/月"
             android:textSize="22dp"
             android:textColor="#FCFCFC"
-            android:background="@color/app_mainColer"
+            android:background="@drawable/button_drawable"
             android:textStyle="normal"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -67,7 +70,7 @@
             android:text="按次计费：3元/小时"
             android:textSize="22dp"
             android:textColor="#FCFCFC"
-            android:background="@color/app_mainColer"
+            android:background="@drawable/button_drawable"
             android:textStyle="normal"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"

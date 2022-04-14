@@ -30,6 +30,7 @@ public class LeaveActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setBackgroundDrawableResource(R.drawable.background);
         setContentView(R.layout.activity_leave);
         plateNumberTextView = findViewById(R.id.plate_number);
         usernameTextView = findViewById(R.id.username);
