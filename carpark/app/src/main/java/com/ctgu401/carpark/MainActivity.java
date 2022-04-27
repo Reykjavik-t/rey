@@ -156,12 +156,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //创建file对象，用于存储拍照后的图片；
         File outputImage = new File(getExternalCacheDir(), "output_image.jpg");
-        VoLog.i(TAG,"scan(0)");
 
         try {
             if (outputImage.exists()) {
                 outputImage.delete();
-                VoLog.i(TAG,"scan(1)");
             }
             outputImage.createNewFile();
 
@@ -172,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (Build.VERSION.SDK_INT >= 24) {
             imageUri = FileProvider.getUriForFile(MainActivity.this,
                     "com.ctgu401.carpark.fileprovider", outputImage);
-            VoLog.i(TAG,"scan(2)");
         } else {
             imageUri = Uri.fromFile(outputImage);
         }
