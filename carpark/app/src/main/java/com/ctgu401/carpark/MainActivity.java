@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import com.ctgu401.carpark.activity.ChargePolicyActivity;
 import com.ctgu401.carpark.activity.EnterActivity;
@@ -35,6 +38,7 @@ import com.ctgu401.carpark.utils.GetCarNumber;
 import com.ctgu401.carpark.utils.ImageHandler;
 import com.ctgu401.carpark.utils.VoLog;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final int TAKE_PHOTO = 1; // 拍照
     public static final int CHOOSE_PHOTO = 2; // 选择相册
     private int freeParking;//空闲车位
+    private Uri imageUri;
     //存放图片byte数组
     private static byte[] imagedata;
 
@@ -113,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openPhotos();
                 break;
             case R.id.scan_btn:
-                //scan();
+                scan();
                 break;
             case R.id.manual_input:
                 dialog();
@@ -123,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
 
     // 获取权限
     private void getPermission() {
@@ -142,6 +148,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent("android.intent.action.GET_CONTENT");
         intent.setType("image/*");
         startActivityForResult(intent, CHOOSE_PHOTO);
+    }
+
+    private void scan()
+    {
+        getPermission();
+
+        //创建file对象，用于存储拍照后的图片；
+        File outputImage = new File(getExternalCacheDir(), "output_image.jpg");
+        VoLog.i(TAG,"scan(0)");
+
+        try {
+            if (outputImage.exists()) {
+                outputImage.delete();
+                VoLog.i(TAG,"scan(1)");
+            }
+            outputImage.createNewFile();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (Build.VERSION.SDK_INT >= 24) {
+            imageUri = FileProvider.getUriForFile(MainActivity.this,
+                    "com.ctgu401.carpark.fileprovider", outputImage);
+            VoLog.i(TAG,"scan(2)");
+        } else {
+            imageUri = Uri.fromFile(outputImage);
+        }
+        VoLog.i(TAG,"scan() imageUri="+ imageUri);
+        VoLog.i(TAG,"scan() path="+imageUri.getPath());
+        //启动相机程序
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        startActivityForResult(intent, TAKE_PHOTO);
     }
 
     //手动输入车牌
@@ -182,22 +222,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (requestCode) {
             // 拍照
             case TAKE_PHOTO:
-//                if (resultCode == RESULT_OK) {
-//                    try {
-//                        Bitmap bm = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-//
-//                        if (null != bm) {
-//                            bm = ImageHandler.rotateBitmap(bm, 90);
-//                            bm = ImageHandler.imageZoom(bm);
-//
-//                            picture.setImageBitmap(bm);
-//                            imagedata = ImageHandler.bitmap2ByteArray(bm);
-//                        }
-//                        new Thread(networkTask).start();
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Bitmap bm = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+
+                        if (null != bm) {
+                            bm = ImageHandler.rotateBitmap(bm, 90);
+                            bm = ImageHandler.imageZoom(bm);
+
+                            picture.setImageBitmap(bm);
+                            imagedata = ImageHandler.bitmap2ByteArray(bm);
+                        }
+                        new Thread(networkTask).start();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             // 选择图片
             case CHOOSE_PHOTO:

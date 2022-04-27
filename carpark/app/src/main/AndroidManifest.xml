@@ -29,6 +29,14 @@
         <activity android:name=".activity.EnterActivity"></activity>
         <activity android:name=".activity.LeaveActivity"></activity>
         <activity android:name=".activity.QueryActivity"></activity>
+        <provider
+            android:authorities="com.ctgu401.carpark.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
     </application>
 
 </manifest>
