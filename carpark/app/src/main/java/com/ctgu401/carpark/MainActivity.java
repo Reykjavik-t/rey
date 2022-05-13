@@ -26,6 +26,7 @@ import androidx.core.content.FileProvider;
 
 import com.ctgu401.carpark.activity.ChargePolicyActivity;
 import com.ctgu401.carpark.activity.EnterActivity;
+import com.ctgu401.carpark.activity.Help;
 import com.ctgu401.carpark.activity.LeaveActivity;
 import com.ctgu401.carpark.activity.QueryActivity;
 import com.ctgu401.carpark.activity.RegisterActivity;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button choosePhotoBtn;
     private Button manualInputBtn;
     private Button queryBtn;
+    private Button help;
     private ImageView picture;
 
     public static final int TAKE_PHOTO = 1; // 拍照
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         picture = findViewById(R.id.iv_picture);
         manualInputBtn = findViewById(R.id.manual_input);
         queryBtn = findViewById(R.id.parking_query);
+        help = findViewById(R.id.help);
 
         freeParking = 50;
         freeParking = parkNumberService.leaveParkNumbers();
@@ -102,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         choosePhotoBtn.setOnClickListener(this);
         manualInputBtn.setOnClickListener(this);
         queryBtn.setOnClickListener(this);
+        help.setOnClickListener(this);
     }
 
     @Override
@@ -126,6 +130,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.parking_query:
                 parking_query();
                 break;
+            case R.id.help:
+                help();
+                break;
+
         }
     }
 
@@ -154,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         getPermission();
 
-        //创建file对象，用于存储拍照后的图片；
+        //File对象，用于存储拍照后的图片；
         File outputImage = new File(getExternalCacheDir(), "output_image.jpg");
 
         try {
@@ -162,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 outputImage.delete();
             }
             outputImage.createNewFile();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -205,6 +212,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         VoLog.i(TAG,"parking_query");
         Intent intent = new Intent(MainActivity.this, QueryActivity.class);
+        startActivity(intent);
+    }
+
+    //使用帮助
+    private void help()
+    {
+        Intent intent = new Intent(MainActivity.this, Help.class);
         startActivity(intent);
     }
 

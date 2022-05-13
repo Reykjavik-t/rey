@@ -15,7 +15,7 @@ import java.net.URL;
  */
 public class GetCarNumber {
 
-    private static final String ACCESS_TOKEN = "24.28a82165e6e006f8b8671eb5cdbfdd92.2592000.1653628258.282335-25157919";
+    private static final String ACCESS_TOKEN = "24.27a9d971f9200f97fb1f114ecb5ccbf4.2592000.1655028245.282335-26227802";
     private static final String POST_URL = "https://aip.baidubce.com/rest/2.0/ocr/v1/license_plate?access_token="+ACCESS_TOKEN;
     private static String TAG= "GetCarNumber";
 

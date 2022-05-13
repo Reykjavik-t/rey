@@ -29,6 +29,7 @@
         <activity android:name=".activity.EnterActivity"></activity>
         <activity android:name=".activity.LeaveActivity"></activity>
         <activity android:name=".activity.QueryActivity"></activity>
+        <activity android:name=".activity.Help"></activity>
         <provider
             android:authorities="com.ctgu401.carpark.fileprovider"
             android:name="androidx.core.content.FileProvider"
